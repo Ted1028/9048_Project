@@ -1,0 +1,318 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Welcome Ted Order</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../css/horizontal-layout-dark/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link href="~/vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
+    @await RenderSectionAsync("Styles", false)
+
+<style>
+    .bgimg {
+        background-image: url("../../images/asdf.jpg") !important;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        z-index: 100 !important;
+    }
+    /*.footer {
+        position:fixed;
+        padding-bottom:
+    }*/
+</style>
+</head>
+
+<body>
+    <div class="container-scroller bgimg">
+        <!-- partial:partials/_horizontal-navbar.html -->
+        <div class="horizontal-menu">
+            <nav class="navbar top-navbar col-lg-12 col-12 p-0">
+                <div class="container">
+                    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                        <a asp-action="Index" asp-controller="Home" class="navbar-brand brand-logo"><img src="../../images/TED.jpg" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+                    </div>
+                    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                        <ul class="navbar-nav mr-lg-2">
+                            <li class="nav-item nav-search d-none d-lg-block">
+                                <div class="input-group">
+                                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                        <span class="input-group-text" id="search">
+                                            <i class="ti-search"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav navbar-nav-right">
+                            @if (ViewBag.IsLogin)
+                            {
+                                string a = ViewBag.E_Name;
+                                <li class="count-indicator  d-flex justify-content-center align-items-center">
+
+
+                                    @if (a.Contains("管理員"))
+                                    {
+                                        <h3> @ViewBag.E_Name，您好</h3>
+
+
+                                    }
+                                    else
+                                    {
+                                        <h3>  @ViewBag.E_Name，您好</h3>
+
+
+                                    }
+                                </li>
+                                <li></li>
+                                if (a.Contains("會員"))
+                                {
+
+                                    <li class="count-indicator  d-flex justify-content-center align-items-center">
+                                        <a asp-controller="Meals" asp-action="Cartlist" style="text-decoration:none"><h2 class="icon-basket"></h2></a>
+                                    </li>
+                                }
+                                <li class="count-indicator  d-flex justify-content-center align-items-center">
+                                    <a asp-controller="Home" asp-action="Logout" style="text-decoration:none"><h2 class="icon-logout"></h2><h4 class="align-items-end float-left">Logout</h4></a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="count-indicator  d-flex justify-content-center align-items-center">
+                                    <h3> Welcome </h3>
+                                </li>
+                                <li></li>
+                                <li class="count-indicator  d-flex justify-content-center align-items-center">
+                                    <a asp-controller="Home" asp-action="Login" style="text-decoration:none"><h2 class="icon-login float-left"></h2><h4 class="align-items-end float-left">Login</h4></a>
+                                </li>
+                            }
+                        </ul>
+                        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
+                            <span class="ti-menu"></span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <nav class="bottom-navbar">
+                <div class="container">
+                    <ul class="nav page-navigation">
+
+
+                        @* 首頁 *@
+                        @*<li class="nav-item">
+                                <a class="nav-link" asp-controller="Restaurants" asp-action="Index">
+                                    <i class="ti-home menu-icon"></i>
+                                    <span class="menu-title">首頁</span>
+                                </a>
+                            </li>*@
+
+                        @* 店家分類 *@
+                        @*<li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="ti-clipboard menu-icon"></i>
+                                    <span class="menu-title">店家分類</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="submenu">
+                                    <ul class="submenu-item">
+                                        <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">義式料理</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="pages/forms/advanced_elements.html">台式料理</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="pages/forms/validation.html">火鍋</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="pages/forms/wizard.html">欸摁</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>*@
+
+
+
+                        @if (ViewBag.IsLogin)
+                        {
+                            string a = ViewBag.E_Name;
+
+                            @if (a.Contains("管理"))
+                            {
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Restaurants" asp-action="Index">
+                                        <i class="ti-home menu-icon"></i>
+                                        <span class="menu-title">首頁</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="ti-clipboard menu-icon"></i>
+                                        <span class="menu-title">店家分類</span>
+                                        <i class="menu-arrow"></i>
+                                    </a>
+                                    <div class="submenu">
+                                        <ul class="submenu-item">
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Restaurants" asp-action="IndexCustomers" asp-route-name="嵐迪義大利麵館">義式料理</a>
+
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Restaurants" asp-action="IndexCustomers" asp-route-name="低低弄-低卡台式便當">台式料理</a>
+
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Restaurants" asp-action="IndexCustomers" asp-route-name="麗媽香香鍋-精誠店">火鍋</a>
+
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="ti-clipboard menu-icon"></i>
+                                        <span class="menu-title">管理員專區</span>
+                                        <i class="menu-arrow"></i>
+                                    </a>
+                                    <div class="submenu">
+                                        <ul class="submenu-item">
+                                            <li class="nav-item"><a class="nav-link" asp-controller="Employees" asp-action="Index">員工列表</a></li>
+                                            <li class="nav-item"><a class="nav-link" asp-controller="Employees" asp-action="Create">新增員工資料</a></li>
+
+
+                                        </ul>
+                                    </div>
+                                </li>
+
+
+                            }
+                            else
+                            {
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Restaurants" asp-action="IndexCustomers">
+                                        <i class="ti-home menu-icon"></i>
+                                        <span class="menu-title">首頁</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="ti-clipboard menu-icon"></i>
+                                        <span class="menu-title">店家分類</span>
+                                        <i class="menu-arrow"></i>
+                                    </a>
+                                    <div class="submenu">
+                                        <ul class="submenu-item">
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Restaurants" asp-action="IndexCustomers" asp-route-name="嵐迪義大利麵館">義式料理</a>
+                                                
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Restaurants" asp-action="IndexCustomers" asp-route-name="低低弄-低卡台式便當">台式料理</a>
+                                                
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Restaurants" asp-action="IndexCustomers" asp-route-name="麗媽香香鍋-精誠店">火鍋</a>
+                                                
+                                            </li>
+                                            
+
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            }
+
+
+
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Restaurants" asp-action="IndexCustomers">
+                                    <i class="ti-home menu-icon"></i>
+                                    <span class="menu-title">首頁</span>
+                                </a>
+                            </li>
+
+
+                           
+                        }
+
+                   
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper ">
+            <div class="main-panel bgimg">
+                <div class="content-wrapper">
+                    <div class="container ">
+                        @RenderBody()
+
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-between justify-content-sm-between">
+                        <span class="text-muted">Copyright © 2021 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+                        <span>Hand-crafted & made with <i class="ti-heart text-danger ms-1"></i></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../js/off-canvas.js"></script>
+    <script src="../../js/hoverable-collapse.js"></script>
+    <script src="../../js/template.js"></script>
+    <script src="../../js/settings.js"></script>
+    <script src="../../js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../js/dashboard.js"></script>
+    <script src="../../js/todolist.js"></script>
+    <!-- End custom js for this page-->
+    @await RenderSectionAsync("Scripts", false)
+</body>
+
+</html>

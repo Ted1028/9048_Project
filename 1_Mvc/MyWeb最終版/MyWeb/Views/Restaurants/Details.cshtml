@@ -1,0 +1,84 @@
+﻿@model MyWeb.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@section Styles{ 
+    <style>
+        h1 {
+            text-shadow: 1px 1px 2px white;
+            color: cornflowerblue;
+        }
+
+        dt {
+            font-size: 2em;
+            text-shadow: 1px 1px 2px blue;
+            /*color: aquamarine;*/
+        }
+        dd {
+            font-size: 2em;
+            color: antiquewhite;
+        }
+        .imgg{
+            width:600px;
+        }
+    </style>
+
+}
+<div>
+    <h4>Restaurant</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-6">
+            <dl class="row">
+                <dt class = "col-sm-4">
+                    @Html.DisplayNameFor(model => model.RestaurantName)
+                </dt>
+                <dd class = "col-sm-8">
+                    @Html.DisplayFor(model => model.RestaurantName)
+                </dd>
+                <dt class = "col-sm-4">
+                    @Html.DisplayNameFor(model => model.R_Phone)
+                </dt>
+                <dd class = "col-sm-8">
+                    @Html.DisplayFor(model => model.R_Phone)
+                </dd>
+                <dt class = "col-sm-4">
+                    @Html.DisplayNameFor(model => model.R_Address)
+                </dt>
+                <dd class = "col-sm-8">
+                    @Html.DisplayFor(model => model.R_Address)
+                </dd>
+                <dt class = "col-sm-4">
+                    @Html.DisplayNameFor(model => model.R_Contact)
+                </dt>
+                <dd class = "col-sm-8">
+                    @Html.DisplayFor(model => model.R_Contact)
+                </dd>
+                <dt class = "col-sm-4">
+                    @Html.DisplayNameFor(model => model.R_C_Cellphone)
+                </dt>
+                <dd class = "col-sm-8">
+                    @Html.DisplayFor(model => model.R_C_Cellphone)
+                </dd>
+                @*<dt class = "col-sm-4">
+                    @Html.DisplayNameFor(model => model.R_ImgFile)
+                </dt>
+                <dd class = "col-sm-8">
+                    @Html.DisplayFor(model => model.R_ImgFile)
+                </dd>*@
+            </dl>
+
+        </div>
+        <div class="col-6">
+            <img src="../../images/Restaurant/@Html.DisplayFor(model => model.R_ImgFile)" alt="Alternate Text" class="imgg"/>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

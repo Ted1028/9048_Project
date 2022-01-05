@@ -1,0 +1,80 @@
+﻿@model MyWeb.Models.Meal
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+@section Styles{
+    <style>
+
+        h1 {
+            text-shadow: 1px 1px 2px white;
+            color: cornflowerblue;
+        }
+
+        label {
+            color: antiquewhite;
+        }
+
+        .imgg {
+            width: 600px;
+        }
+    </style>
+
+}
+<h4>Meal</h4>
+<hr />
+<div class="row">
+    <div class="col-6">
+
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="MID" />
+                    <div class="form-group">
+                        <label asp-for="R_Name" class="control-label"></label>
+                        <input asp-for="R_Name" class="form-control" />
+                        <span asp-validation-for="R_Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="M_Name" class="control-label"></label>
+                        <input asp-for="M_Name" class="form-control" />
+                        <span asp-validation-for="M_Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="M_InFo" class="control-label"></label>
+                        <input asp-for="M_InFo" class="form-control" />
+                        <span asp-validation-for="M_InFo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="M_Price" class="control-label"></label>
+                        <input asp-for="M_Price" class="form-control" />
+                        <span asp-validation-for="M_Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="M_ImgFile" class="control-label"></label>
+                        <input asp-for="M_ImgFile" class="form-control" />
+                        <span asp-validation-for="M_ImgFile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <img src="../../images/Meals/@Model.M_ImgFile" alt="Alternate Text" class="imgg" />
+
+    </div>
+</div>
+<div>
+    <a asp-action="Index" asp-route-name="@ViewBag.Name">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

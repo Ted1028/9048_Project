@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MyWeb.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Styles{
+    <style>
+        .h33 {
+            color:cornsilk;
+        }
+        th{
+            color:darkseagreen;
+        }
+        td{
+            color:blanchedalmond;
+        }
+        .tdd{
+            color:blanchedalmond;
+        }
+    </style>
+
+
+ }
+
+
+<h3 class="h33">餐廳列表</h3>
+
+<div>
+    <a asp-controller="Restaurants" asp-action="Create" style="text-decoration:none"><span class="icon-plus "></span>&emsp; <span>Add Restaurant</span></a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RestaurantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_C_Cellphone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_ImgFile)
+            </th>
+            <th>菜單</th>
+            <th>編輯</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestaurantName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.R_Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.R_Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.R_Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.R_C_Cellphone)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.R_ImgFile)*@
+                    <img src="../../images/Restaurant/@item.R_ImgFile" alt="Alternate Text" style="width:290px;height:270px;" />
+                </td>
+                <td> <a asp-controller="Meals" asp-action="Index" asp-route-name="@item.RestaurantName" style="text-decoration:none"> <h3 class="icon-book-open tdd"></h3></a></td>
+                <td >
+                    <a asp-action="Edit" asp-route-id="@item.RID" style="text-decoration:none; justify-content:flex-start;" class="float-left"><i class="icon-note tdd"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.RID" style="text-decoration: none; justify-content:flex-start;" class="float-left"><i class="icon-bubble tdd"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.RID" style="text-decoration: none; justify-content: flex-start;" class="float-left"><i class="icon-trash tdd"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

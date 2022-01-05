@@ -1,0 +1,120 @@
+﻿@model IEnumerable<MyWeb.Models.Cart>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>已點餐點清單</h1>
+@section styles{
+    <style>
+        h1 {
+            color: cornflowerblue;
+            text-shadow: 1px 1px 1px blue;
+        }
+
+        dt {
+            font-size: 1.5em;
+            color: aliceblue;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        dd {
+            font-size: 1.3em;
+            color: antiquewhite;
+        }
+
+        .RName {
+            color: burlywood;
+        }
+        .Mname{
+            color:antiquewhite;
+        }
+        dt:hover {
+            color: aliceblue;
+        }
+
+        dd:hover {
+            color: aliceblue;
+        }
+        span {
+            color:azure;
+            font-size:1.5em;
+        }
+    </style>
+ }
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="RName">
+                    @Html.DisplayNameFor(model => model.MealsName)
+                </th>
+                <th class="RName">
+                    @Html.DisplayNameFor(model => model.Meals_Price)
+                </th>
+                <th class="RName">
+                    @Html.DisplayNameFor(model => model.Meals_Count)
+                </th>
+
+                <th class="RName"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="Mname">
+                        @Html.DisplayFor(modelItem => item.MealsName)
+                    </td>
+                    <td class="Mname">
+                        $@Html.DisplayFor(modelItem => item.Meals_Price)
+                    </td>
+                    <td class="Mname">
+                        @Html.DisplayFor(modelItem => item.Meals_Count)
+                    </td>
+                    <td></td>
+                    @*<td>
+                            <a asp-action="Edit" asp-route-id="@item.MID" asp-route-name="@ViewBag.Name" style="text-decoration:none; justify-content:flex-start;" class="float-left"><i class="icon-note " ></i></a>
+                            <a asp-action="Details" asp-route-id="@item.MID" asp-route-name="@ViewBag.Name" style="text-decoration: none; justify-content:flex-start;" class="float-left"><i class="icon-bubble "></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.MID" asp-route-name="@ViewBag.Name" style="text-decoration: none; justify-content: flex-start;" class="float-left"><i class="icon-trash "></i></a>
+                        </td>*@
+                </tr>
+            
+            }
+
+
+        </tbody>
+    </table>
+<div class="text-right">
+    <span class="float-right">總價</span> : <span class="float-right">NT $@ViewBag.TOTAL</span>
+</div>
+
+    @*<input type="text" name="name" value="@ViewBag.TOTAL" id="totaltext" />*@
+    @*<p>
+        <a asp-controller="Meals" asp-action="IndexCustomers" asp-route-name=" @ViewBag.Name" style="text-decoration:none"><span class="ti-share-alt "></span>&emsp; <span>Back</span></a>
+    </p>*@
+
+</div>
+
+
+@section Scripts{
+    @*<script>
+        $(function () {
+            $("#totaltext").val(function () {
+                /*var myName = $("#hidName").val();*/
+
+                $.ajax({
+                    url: `@Url.Action("Total", "Meals")?name=${myName}`,
+                    async: false,
+                    success: function (result) {
+                        //console.log(result.r_Name);
+                        location.href = `/Meals/IndexCustomers?name=${result.r_Name}`;
+                    },
+                    error: function (error) {
+                        alert("error");
+                    }
+                });
+            });
+        });
+    </script>*@
+}

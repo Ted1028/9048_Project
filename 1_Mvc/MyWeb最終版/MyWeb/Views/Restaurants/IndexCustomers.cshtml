@@ -1,0 +1,124 @@
+﻿@model IEnumerable<MyWeb.Models.Restaurant>
+
+@{
+    ViewData["Title"] ="餐廳列表";
+}
+
+<h3 class="h33">餐廳列表</h3>
+
+@section Styles{ 
+    <style>
+        
+        .textco {
+            font-size: 1.3em;
+            /*text-shadow: 1px 1px 2px blue;*/
+            color: antiquewhite;
+        }
+
+        .h33{
+            color:cornflowerblue;
+            text-shadow: 1px 1px 1px blue;
+        }
+
+        .textco:hover {
+            color: white;
+        }
+
+        
+    </style>
+}
+
+<div class="content-wrapper">
+    <div class="row portfolio-grid col-12 justify-content-evenly"> 
+        @foreach (var item in Model)
+        {
+
+            
+            <div class=" col-lg-3 col-md-6 col-sm-6">
+                <div class="card cardpadd" style="margin-top:20px;">
+                    <div class="card-title">
+                        <span class="textco">@Html.DisplayNameFor(model => model.RestaurantName)</span> : <span class="textco">  @Html.DisplayFor(modelItem => item.RestaurantName)</span>  
+                    </div>
+
+                    <img src="../images/Restaurant/@item.R_ImgFile" alt="Alternate Text" style="max-height:190px;"/>
+                    @*<div class="card-body">
+
+                    </div>*@
+                    <div class="card-footer float-left">
+                        <div class="row justify-content-center">
+                            <div class="col-10">
+                                <a asp-controller="Meals" asp-action="IndexCustomers" asp-route-name="@item.RestaurantName" style="text-decoration:none" class="col-6"> <span class="icon-book-open float-left" style="font-size:1.5em;"></span></a>
+
+                            </div>
+                            <div class="col-2 float-right">
+                                <a asp-action="DetailsCustomers" asp-route-id="@item.RID" style="text-decoration: none; justify-content:flex-start;" class="float-right col-6" ><span class="icon-bubble float-right" style="font-size:1.5em;"></span></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@*<table class="table"> 
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RestaurantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_C_Cellphone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.R_ImgFile)
+            </th>
+            <th>菜單</th>
+            <th>店家詳細資料</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.R_Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.R_Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.R_Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.R_C_Cellphone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.R_ImgFile)
+            </td>
+            <td> <a asp-controller="Meals" asp-action="IndexCustomers" asp-route-name="@item.RestaurantName" style="text-decoration:none"> <h3 class="icon-book-open"></h3></a></td>
+            <td>
+                
+                <a asp-action="DetailsCustomers" asp-route-id="@item.RID" style="text-decoration: none; justify-content:flex-start;" class="float-left"><h3 class="icon-bubble "></h3></a> 
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
+
+

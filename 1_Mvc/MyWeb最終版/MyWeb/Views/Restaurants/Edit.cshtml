@@ -1,0 +1,87 @@
+﻿@model MyWeb.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+@section Styles{
+    <style>
+
+        h1 {
+            text-shadow: 1px 1px 2px white;
+            color: cornflowerblue;
+        }
+
+        label {
+            color: antiquewhite;
+        }
+
+        .imgg {
+            width: 600px;
+        }
+    </style>
+
+}
+<h4>Restaurant</h4>
+<hr />
+<div class="row">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-7">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="RID" />
+                    <div class="form-group">
+                        <label asp-for="RestaurantName" class="control-label"></label>
+                        <input asp-for="RestaurantName" class="form-control" />
+                        <span asp-validation-for="RestaurantName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="R_Phone" class="control-label"></label>
+                        <input asp-for="R_Phone" class="form-control" />
+                        <span asp-validation-for="R_Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="R_Address" class="control-label"></label>
+                        <input asp-for="R_Address" class="form-control" />
+                        <span asp-validation-for="R_Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="R_Contact" class="control-label"></label>
+                        <input asp-for="R_Contact" class="form-control" />
+                        <span asp-validation-for="R_Contact" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="R_C_Cellphone" class="control-label"></label>
+                        <input asp-for="R_C_Cellphone" class="form-control" />
+                        <span asp-validation-for="R_C_Cellphone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="R_ImgFile" class="control-label"></label>
+                        <input type="file" name="file" class="form-control" />
+
+
+                        <span asp-validation-for="R_ImgFile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-6">
+        <img src="../../images/Restaurant/@Model.R_ImgFile" alt="Alternate Text" class="imgg" />
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

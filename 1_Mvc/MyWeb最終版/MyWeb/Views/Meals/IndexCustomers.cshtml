@@ -1,0 +1,122 @@
+﻿@model IEnumerable<MyWeb.Models.Meal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>餐點清單</h1>
+
+@section Styles{ 
+    <style>
+        h1 {
+            color: cornflowerblue;
+            text-shadow: 1px 1px 1px blue;
+        }
+        dt {
+            font-size: 1.5em;
+            color:aliceblue;
+            text-shadow: 1px 1px 2px black;
+        }
+        dd {
+            font-size:1.3em;
+            color:antiquewhite;
+        }
+        .RName{
+            color:burlywood;
+        }
+        dt:hover{
+            color:aliceblue;
+        }
+        dd:hover {
+            color: aliceblue;
+        }
+        /*.imgbig {
+            width: 320px;
+            height: 290px;
+        }*/
+/*        .imgbig:hover{
+            width:350px;
+            height:320px;
+        }*/
+    </style>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="RName">
+                @*@Html.DisplayNameFor(model => model.R_Name)*@
+                @ViewBag.Name
+                @*@Html.DisplayNameFor(model => model.R_Name)*@
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.M_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.M_InFo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.M_Price)
+            </th>*@
+            <th class="RName">
+                @Html.DisplayNameFor(model => model.M_ImgFile)
+            </th>
+            @*<th>Add Cart</th>*@
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.R_Name)*@
+                <dl class="row">
+                    @*<dt class="col-sm-2">@Html.DisplayNameFor(model => model.R_Name)</dt><dd class="col-sm-10">@Html.DisplayFor(modelItem => item.R_Name)</dd>*@
+                    <dt class="col-sm-2">@Html.DisplayNameFor(model => model.M_Name)</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(modelItem => item.M_Name)</dd>
+                    <dt></dt>
+                    <dd></dd>
+                    <dt></dt>
+                    <dd></dd>
+                    @*<dt class="col-sm-2">@Html.DisplayNameFor(model => model.M_InFo)</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(modelItem => item.M_InFo)</dd>*@
+                    <dt></dt>
+                    <dd></dd>
+                    <dt></dt>
+                    <dd></dd>
+                    <dt class="col-sm-2">@Html.DisplayNameFor(model => model.M_Price)</dt>
+                    <dd class="col-sm-9">$@Html.DisplayFor(modelItem => item.M_Price)</dd>
+                    <dt></dt>
+                    <dd></dd>
+                    <dt>  </dt>
+                    <dd></dd>
+
+                </dl>
+                <a asp-action="DetailsCustomers" asp-controller="Meals" asp-route-id="@item.MID" asp-route-name="@ViewBag.Name" style="text-decoration: none; justify-content:flex-start;" class="float-left"><h2 class="icon-bubble "></h2></a>
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.M_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.M_InFo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.M_Price)
+            </td>*@
+            <td>
+                <img src="../images/Meals/@item.M_ImgFile" alt="Alternate Text" class="imgbig" style="width: 320px; height: 290px;"  />
+                @*@Html.DisplayFor(modelItem => item.M_ImgFile)*@
+            </td>
+            @*<td>
+                <a asp-action="DetailsCustomers" asp-controller="Meals" asp-route-id="@item.MID" asp-route-name="@ViewBag.Name" style="text-decoration: none; justify-content:flex-start;" class="float-left"><i class="icon-bubble "></i></a> 
+            </td>*@
+        </tr>
+}
+    
+    
+    </tbody>
+</table>
+
+<p>
+    <a asp-controller="Restaurants" asp-action="IndexCustomers" style="text-decoration:none"><span class="ti-share-alt " ></span>&emsp; <span>Back</span></a>
+</p>

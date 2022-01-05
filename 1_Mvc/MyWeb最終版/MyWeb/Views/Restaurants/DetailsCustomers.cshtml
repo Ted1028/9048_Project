@@ -1,0 +1,112 @@
+﻿@model MyWeb.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Restaurant</h1>
+
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <div class="row">
+        <div class="col-7">
+            <dl class="row">
+                <dt></dt>
+                <dd></dd>
+                <dt></dt>
+                <dd></dd>
+                <dt></dt>
+                <dd></dd>
+                <dt></dt>
+                <dd></dd>
+                <dt></dt>
+                <dd></dd>
+                <dt class="col-sm-3 ">
+                    @Html.DisplayNameFor(model => model.RestaurantName)
+                </dt>
+                <dd class="col-sm-9 ">
+                    @Html.DisplayFor(model => model.RestaurantName)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.R_Phone)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.R_Phone)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.R_Address)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.R_Address)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.R_Contact)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.R_Contact)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.R_C_Cellphone)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.R_C_Cellphone)
+                </dd>
+                @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.R_ImgFile)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.R_ImgFile)
+        </dd>*@
+            </dl>
+        </div>
+
+        <div class="col-5">
+            <dl >
+                <dt>
+                    <img class="imgbig" src="../../images/Restaurant/@Model.R_ImgFile" alt="Alternate Text"  />
+                </dt>
+            </dl>
+        </div>
+    </div>
+<div>
+    <a asp-action="IndexCustomers" asp-controller="Restaurants">Back to List</a>
+</div>
+</div>
+@section Styles{
+    <style>
+        h1 {
+            text-shadow: 1px 1px 2px white;
+            color: cornflowerblue;
+        }
+
+        dt {
+            font-size: 2em;
+            text-shadow: 1px 1px 2px blue;
+            /*color: aquamarine;*/
+        }
+
+        dd {
+            font-size: 2em;
+            color: antiquewhite;
+        }
+
+            dd:hover {
+                color: white;
+            }
+
+        dt:hover {
+            color: aqua;
+        }
+
+        .imgbig {
+            border-radius: 10px;
+            width: 500px;
+        }
+
+            .imgbig:hover {
+                width: 600px;
+                transition: transform 0.25s ease;
+            }
+    </style>
+}

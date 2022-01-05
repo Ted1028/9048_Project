@@ -1,0 +1,83 @@
+﻿@model MyWeb.Models.Customer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+@section Styles{
+    <style>
+        h1 {
+            color: aqua;
+        }
+
+        .h44 {
+            color: aqua;
+        }
+        label {
+            color: antiquewhite;
+        }
+    </style>
+}
+<h4 class="h44">Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="C_Name" class="control-label"></label>
+                <input  asp-for="C_Name" class="form-control" id="Cname"/>
+                <span asp-validation-for="C_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_CellPhone" class="control-label"></label>
+                <input asp-for="C_CellPhone" class="form-control" id="Ccell" />
+                <span asp-validation-for="C_CellPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_AC_Email" class="control-label"></label>
+                <input asp-for="C_AC_Email" class="form-control" id="Cemail" />
+                <span asp-validation-for="C_AC_Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_Password" class="control-label"></label>
+                <input asp-for="C_Password" class="form-control" type="password" id="Cpw" />
+                <span asp-validation-for="C_Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="C_Address" class="control-label"></label>
+                <input asp-for="C_Address" class="form-control" id="Cadd" />
+                <span asp-validation-for="C_Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <input type="button" name="name" value="Demo" id="Demo" class="btn btn-pinterest" />
+</div>
+<div>
+    <a asp-controller="Home" asp-action="Index">Cancle</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    $(function () {
+        $("#Demo").click(function () {
+            $("#Cname").val("羅偉瑄");
+            $("#Ccell").val("0981012535");
+            $("#Cemail").val("lovexji6jo3vm0@yahoo.com.tw");
+            $("#Cpw").val("123456789");
+            $("#Cadd").val("台北市大安區中正南路305號");
+
+        });
+
+    });
+</script>
+
+}

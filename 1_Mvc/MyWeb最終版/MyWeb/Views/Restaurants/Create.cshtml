@@ -1,0 +1,103 @@
+﻿@model MyWeb.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Restaurant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RestaurantName" class="control-label"></label>
+                <input asp-for="RestaurantName" class="form-control" id="Rname"/>
+                <span asp-validation-for="RestaurantName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="R_Phone" class="control-label"></label>
+                <input asp-for="R_Phone" class="form-control" id="Rphone"/>
+                <span asp-validation-for="R_Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="R_Address" class="control-label"></label>
+                <input asp-for="R_Address" class="form-control" id="R_add"/>
+                <span asp-validation-for="R_Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="R_Contact" class="control-label"></label>
+                <input asp-for="R_Contact" class="form-control" id="R_Con"/>
+                <span asp-validation-for="R_Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="R_C_Cellphone" class="control-label"></label>
+                <input asp-for="R_C_Cellphone" class="form-control" id="R_Cell"/>
+                <span asp-validation-for="R_C_Cellphone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">上傳圖片</label>
+                @*<input asp-for="R_ImgFile" class="form-control" />*@
+                <input type="file" name="file" class="" />
+                <span asp-validation-for="R_ImgFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <input type="button" name="name" value="Demo" id="Demo" class="btn btn-reddit"/>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Styles{
+    <style>
+        h1 {
+            text-shadow: 1px 1px 2px white;
+            color: cornflowerblue;
+        }
+        label {
+            color: antiquewhite;
+        }
+        dt {
+            font-size: 2em;
+            text-shadow: 1px 1px 2px blue;
+            /*color: aquamarine;*/
+        }
+        
+        dd {
+            font-size: 2em;
+            color: antiquewhite;
+        }
+
+            dd:hover {
+                color: white;
+            }
+    </style>
+ }
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(function () {
+            $("#Demo").click(function () {
+                $("#Rname").val("林東芳牛肉麵");
+                $("#Rphone").val("0227522556");
+                $("#R_add").val("台北市中山區八德路二段322號");
+                $("#R_Con").val("王大陸");
+                $("#R_Cell").val("0981225867");
+
+
+            });
+
+
+        });
+
+    </script>
+
+}
